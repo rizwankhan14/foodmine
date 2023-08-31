@@ -1,3 +1,4 @@
+import { tag } from './../../../shared/models/tag';
 import { FoodService } from './../../../services/food.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -15,7 +16,8 @@ export class HomeComponent implements OnInit {
     activatedRoute.params.subscribe((params) => {
       if(params.searchTerm)
       this.foods = this.foodservice.getllFoodsBySearchTerm(params.searchTerm);
-
+    else if (params.tag)
+    this.foods = this.foodservice.getAllFoodsByTag(params.tag)
     else
     
     this.foods=foodservice.getAll();
